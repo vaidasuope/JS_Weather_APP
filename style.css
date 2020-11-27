@@ -1,0 +1,25 @@
+body {
+    background-color: lightskyblue;
+}
+#top {
+    background-color: dodgerblue;
+}
+h1 {
+    color: white;
+    font-family: "Cooper Black";
+}
+#searchButton {
+    font-family: "Cooper Black";
+}
+#searchCity {
+    background-color: transparent;
+    border: white 3px solid;
+}
+input ::placeholder {
+
+}
+#scrollDiv > .row {
+    display: block;
+    overflow-x: auto;
+    white-space: nowrap;
+}
