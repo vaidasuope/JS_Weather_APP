@@ -52,7 +52,6 @@ const placeForecast = async () => {
 
         //cia per unikalias datas begam ir susidedam kiekviena i html'a
         uniqueDate.map(date => {
-            // placeDate.innerHTML=" ";
             // console.log(date);
             const finalDate = new Date(date).toDateString();
             const dateHTML = document.createElement("div");
