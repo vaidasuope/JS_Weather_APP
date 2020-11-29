@@ -7,9 +7,9 @@ const placeWeather = document.getElementById("place");
 const placeCity = document.getElementById("placeCity");
 const placeDate = document.getElementById("placeDate");
 
-
 const placeForecast = async () => {
     console.log("spaudziu");
+
     try {
         // console.log(`${placeCode.value} miestos reiksme`);
         const getPlaceData = await fetch(`https://api.meteo.lt/v1/places/${placeCode.value}/forecasts/long-term`);
@@ -18,7 +18,7 @@ const placeForecast = async () => {
         // console.log(forecastData);
         const placeName = placesData.place;
         const city = placeName.name;
-        placeCode.value=" ";
+        placeCode.value = "";
 
         //miestos pavadinimas
         placeCity.innerHTML = " ";
@@ -32,8 +32,8 @@ const placeForecast = async () => {
         cityName.innerHTML = city;
         cityName.style.color = "white";
         cityName.style.fontFamily = "Courier New";
-        cityName.style.fontWeight="bold";
-        cityName.style.fontSize="55px";
+        cityName.style.fontWeight = "bold";
+        cityName.style.fontSize = "55px";
 
         placeCity.appendChild(cityOne);
         cityOne.appendChild(cityName);
@@ -72,19 +72,24 @@ const placeForecast = async () => {
             dateHTML.style.boxShadow = "-20px -10px 30px 10px";
             if (dateHTML.id === uniqueDate[0]) {
                 dateHTML.innerHTML = "Today";
+                pridetiValandosOrus(dateHTML.id);//imeta is karto today orus kortele atidaryta
             } else {
                 dateHTML.innerHTML = finalDate;
             }
-            dateHTML.style.transform = "scale(1)";
 
             // pridetiValandosOrus();
             dateHTML.addEventListener("click", pridetiValandosOrus); //spaudziam ant divo su data cia
+
+            dateHTML.addEventListener("mouseenter", deleteSCale);
+
+            function deleteSCale (){
+                dateHTML.style.transform="scale(1,1)";
+            }
 
             //sudeda divus su valandom visu dienu
             function pridetiValandosOrus() {
                 // console.log("spaudziu div prideti");
                 placeWeather.innerHTML = " ";
-                dateHTML.style.transform = "scale(0)";
 
                 forecastData.forEach(forecast => {
                     console.log(forecast);
@@ -92,89 +97,89 @@ const placeForecast = async () => {
                     const dateFormat = str.split(" ")
                     const dateAdd = dateFormat[0];
                     const hour = dateFormat[1];
-                    const hourFormat = hour.substr(0,5);
+                    const hourFormat = hour.substr(0, 5);
 
                     if (dateAdd === dateHTML.id) {
-                        dateHTML.style.transform = "scale(1, 1.3)";
-                        // console.log(dateAdd);
-                        // console.log(uniqueDate.length);
-                        // console.log(typeof(datesALL));
-                        const forecastOne = document.createElement("div");
-                        forecastOne.style.backgroundColor = "rgb(47,120,194,.6)";
-                        forecastOne.style.border = "1px solid white";
-                        forecastOne.style.display = "inline-block"; // scroll reikalinga
-                        forecastOne.style.padding = "5px";
-                        forecastOne.style.height = "390px";
-                        forecastOne.style.fontFamily = "Courier New";
-                        forecastOne.style.color = "white";
-                        forecastOne.style.fontWeight = "bold";
-                        forecastOne.setAttribute("class", "col-md-1 text-center")
-                        const hourHTML = document.createElement("p");
-                        hourHTML.innerHTML = hourFormat;
-                        const temp = document.createElement("p");
-                        temp.innerHTML = `${forecast.airTemperature} &deg;C`;
-                        const precitation = document.createElement("p");
-                        precitation.innerHTML = `${forecast.totalPrecipitation} %`;
-                        const drop = document.createElement("img");
-                        drop.src = "rain drops.ico";
-                        drop.style.height="25px";
-                        const wind = document.createElement("p");
-                        wind.innerHTML = `Wind: ${forecast.windSpeed} m/s`;
+                            dateHTML.style.transform = "scale(1,1.3)";
+                            // console.log(dateAdd);
+                            // console.log(uniqueDate.length);
+                            // console.log(typeof(datesALL));
+                            const forecastOne = document.createElement("div");
+                            forecastOne.style.backgroundColor = "rgb(47,120,194,.6)";
+                            forecastOne.style.border = "1px solid white";
+                            forecastOne.style.display = "inline-block"; // scroll reikalinga
+                            forecastOne.style.padding = "5px";
+                            forecastOne.style.height = "390px";
+                            forecastOne.style.fontFamily = "Courier New";
+                            forecastOne.style.color = "white";
+                            forecastOne.style.fontWeight = "bold";
+                            forecastOne.setAttribute("class", "col-md-1 text-center")
+                            const hourHTML = document.createElement("p");
+                            hourHTML.innerHTML = hourFormat;
+                            hourHTML.style.marginTop = "10px";
+                            const temp = document.createElement("p");
+                            temp.innerHTML = `${forecast.airTemperature} &deg;C`;
+                            const precitation = document.createElement("p");
+                            precitation.innerHTML = `${forecast.totalPrecipitation} %`;
+                            const drop = document.createElement("img");
+                            drop.src = "foto/rain drops.ico";
+                            drop.style.height = "25px";
+                            drop.style.marginTop = "70px";
+                            const wind = document.createElement("p");
+                            wind.innerHTML = `Wind: ${forecast.windSpeed} m/s`;
 
-                        placeWeather.appendChild(forecastOne);
-                        forecastOne.appendChild(hourHTML);
-                        forecastOne.appendChild(temp);
-                        const icon = document.createElement("p");
-                        icon.style.height="60px";
-                        icon.style.alignItems="center";
-                        switch (forecast.conditionCode){
-                            case ("clear"):
-                                icon.innerHTML = `<img src="clear.svg" height="60px">`;
-                                break;
-                            case ("isolated-clouds"):
-                                icon.innerHTML = `<img src="isolated-clouds.png" height="60px">`;
-                                break;
-                            case ("scattered-clouds"):
-                                icon.innerHTML = `<img src="scattered-clouds.png" height="60px">`;
-                                break;
-                            case ("overcast"):
-                                icon.innerHTML = `<img src="overcast.png" height="60px">`;
-                                break;
-                            case ("light-rain"):
-                                icon.innerHTML = `<img src="" height="60px">`;
-                                break;
-                            case ("moderate-rain"):
-                                icon.innerHTML = `<img src="" height="60px">`;
-                                break;
-                            case ("heavy-rain"):
-                                icon.innerHTML = `<img src="" height="60px">`;
-                                break;
-                            case ("sleet"):
-                                icon.innerHTML = `<img src="" height="60px">`;
-                                break;
-                            case ("light-snow"):
-                                icon.innerHTML = `<img src="" height="60px">`;
-                                break;
-                            case ("moderate-snow"):
-                                icon.innerHTML = `<img src="" height="60px">`;
-                                break;
-                            case ("heavy-snow"):
-                                icon.innerHTML = `<img src="" height="60px">`;
-                                break;
-                            case ("fog"):
-                                icon.innerHTML = `<img src="" height="60px">`;
-                                break;
-                            case ("na"):
-                                icon.innerHTML = `<img src="" height="60px">`;
-                        }
-                        forecastOne.appendChild(icon);
-
-                        forecastOne.appendChild(drop);
-                        forecastOne.appendChild(precitation);
-                        forecastOne.appendChild(wind);
-
+                            placeWeather.appendChild(forecastOne);
+                            forecastOne.appendChild(hourHTML);
+                            forecastOne.appendChild(temp);
+                            const icon = document.createElement("p");
+                            icon.style.height = "60px";
+                            icon.style.alignItems = "center";
+                            icon.style.marginTop = "50px";
+                            switch (forecast.conditionCode) {
+                                case ("clear"):
+                                    icon.innerHTML = `<img src="foto/015-day.png" height="60px">`;
+                                    break;
+                                case ("isolated-clouds"):
+                                    icon.innerHTML = `<img src="foto/038-cloudy-3.png" height="60px">`;
+                                    break;
+                                case ("scattered-clouds"):
+                                    icon.innerHTML = `<img src="foto/001-cloud.png" height="60px">`;
+                                    break;
+                                case ("overcast"):
+                                    icon.innerHTML = `<img src="foto/011-cloudy.png" height="60px">`;
+                                    break;
+                                case ("light-rain"):
+                                    icon.innerHTML = `<img src="foto/034-cloudy-1.png" height="60px">`;
+                                    break;
+                                case ("moderate-rain"):
+                                    icon.innerHTML = `<img src="foto/003-rainy.png" height="60px">`;
+                                    break;
+                                case ("heavy-rain"):
+                                    icon.innerHTML = `<img src="foto/004-rainy-1.png" height="60px">`;
+                                    break;
+                                case ("sleet"):
+                                    icon.innerHTML = `<img src="foto/012-snowy-1.png" height="60px">`;
+                                    break;
+                                case ("light-snow"):
+                                    icon.innerHTML = `<img src="foto/035-snowy-2.png" height="60px">`;
+                                    break;
+                                case ("moderate-snow"):
+                                    icon.innerHTML = `<img src="foto/006-snowy.png" height="60px">`;
+                                    break;
+                                case ("heavy-snow"):
+                                    icon.innerHTML = `<img src="foto/006-snowy.png" height="60px">`;
+                                    break;
+                                case ("fog"):
+                                    icon.innerHTML = `<img src="foto/017-foog.png" height="60px">`;
+                                    break;
+                                case ("na"):
+                                    icon.innerHTML = `<img src="" height="60px">`;
+                            }
+                            forecastOne.appendChild(icon);
+                            forecastOne.appendChild(drop);
+                            forecastOne.appendChild(precitation);
+                            forecastOne.appendChild(wind);
                     }
-
                 });
             }
         });
@@ -182,15 +187,11 @@ const placeForecast = async () => {
         console.log("Can't load the data!")
     }
 }
+searchButton.addEventListener("click", placeForecast);
+placeForecast(placeCode.value="kaunas");
 
-function clearName () {
-    document.getElementById("searchCity").innerHTML=" ";
-}
 
-searchButton.addEventListener("click", function (e) {
-    placeForecast ();
-    clearName();
-});
+
 
 
 
