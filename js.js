@@ -189,6 +189,7 @@ const placeForecast = async () => {
 }
 searchButton.addEventListener("click", placeForecast);
 placeForecast(placeCode.value="kaunas");
+placeForecast(placeCode.value="");
 
 
 
