@@ -3,6 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="a8cffc39-0093-440c-9bad-5657fff9322c" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js.js" beforeDir="false" afterPath="$PROJECT_DIR$/js.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/style.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -34,7 +36,7 @@
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../JS_Weather_APP-master" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
@@ -63,6 +65,8 @@
       <workItem from="1606585776806" duration="199000" />
       <workItem from="1606586224048" duration="129000" />
       <workItem from="1606632431370" duration="8207000" />
+      <workItem from="1606640905807" duration="8000" />
+      <workItem from="1606659455151" duration="9647000" />
     </task>
     <task id="LOCAL−00001" summary="added hour forecast for each day">
       <created>1606585842216</created>
