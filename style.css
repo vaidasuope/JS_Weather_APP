@@ -23,13 +23,11 @@ h1 {
     font-family: "Courier New";
     font-size: 30px;
 }
-
 #scrollDiv > .row {
     display: block;
     overflow-x: auto;
     white-space: nowrap;
 }
-
 .form-control::-webkit-input-placeholder {
     color: white;
 }

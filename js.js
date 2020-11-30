@@ -9,7 +9,6 @@ const placeDate = document.getElementById("placeDate");
 
 const placeForecast = async () => {
     console.log("spaudziu");
-
     try {
         // console.log(`${placeCode.value} miestos reiksme`);
         const getPlaceData = await fetch(`https://api.meteo.lt/v1/places/${placeCode.value}/forecasts/long-term`);
@@ -19,8 +18,7 @@ const placeForecast = async () => {
         const placeName = placesData.place;
         const city = placeName.name;
         placeCode.value = "";
-
-        //miestos pavadinimas
+        //miesto pavadinimas
         placeCity.innerHTML = " ";
         placeDate.innerHTML = " ";
         const cityOne = document.createElement("div");
@@ -34,7 +32,6 @@ const placeForecast = async () => {
         cityName.style.fontFamily = "Courier New";
         cityName.style.fontWeight = "bold";
         cityName.style.fontSize = "55px";
-
         placeCity.appendChild(cityOne);
         cityOne.appendChild(cityName);
 
@@ -49,7 +46,6 @@ const placeForecast = async () => {
             return x;
         }, []);
         // console.log(uniqueDate);
-
         //cia per unikalias datas begam ir susidedam kiekviena i html'a
         uniqueDate.forEach(date => {
             // console.log(date);
@@ -77,29 +73,24 @@ const placeForecast = async () => {
             } else {
                 dateHTML.innerHTML = finalDate;
             }
-
             //kad scale keistusi - neveikia dar iki galo
-
             const scaleDIV = placeDate.getElementsByClassName("dateDIVS");
-
-            for (let i=0; i<=scaleDIV.length; i++) {
-                dateHTML.addEventListener("click", scale);
-                function scale () {
+            for (let i = 0; i < scaleDIV.length; i++) {
+                scaleDIV[i].addEventListener("click", scale);
+                function scale() {
                     const currentActive = placeDate.getElementsByClassName("active");
-                    currentActive[0].className=currentActive[i].className.replace(" active", " ");
+                    if (currentActive.length > 0) {
+                        currentActive[0].className = currentActive[0].className.replace("active", "")
+                    }
                     this.className += " active";
-                };
+                }
             }
-
             dateHTML.addEventListener("click", pridetiValandosOrus); //spaudziam ant divo su data cia
-
             //sudeda divus su valandom visu dienu
             function pridetiValandosOrus() {
                 // console.log("spaudziu div prideti");
                 placeWeather.innerHTML = " ";
-
                 forecastData.forEach(forecast => {
-
                     console.log(forecast);
                     const timeStamp = forecast.forecastTimeUtc;
                     const dateFormat = timeStamp.split(" ")
@@ -108,9 +99,6 @@ const placeForecast = async () => {
                     const hourFormat = hour.substr(0, 5);
 
                     if (dateAdd === dateHTML.id) {
-
-                        // dateHTML.setAttribute("class", "active col-md dateDIVS");
-                        // scale();
                         // console.log(dateAdd);
                         // console.log(uniqueDate.length);
                         // console.log(typeof(datesALL));
@@ -137,7 +125,6 @@ const placeForecast = async () => {
                         drop.style.marginTop = "70px";
                         const wind = document.createElement("p");
                         wind.innerHTML = `Wind: ${forecast.windSpeed} m/s`;
-
                         placeWeather.appendChild(forecastOne);
                         forecastOne.appendChild(hourHTML);
                         forecastOne.appendChild(temp);
@@ -200,12 +187,3 @@ const placeForecast = async () => {
 searchButton.addEventListener("click", placeForecast);
 placeForecast(placeCode.value = "kaunas");
 placeForecast(placeCode.value = "");
-
-
-
-
-
-
-
-
-
