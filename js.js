@@ -73,7 +73,7 @@ const placeForecast = async () => {
             } else {
                 dateHTML.innerHTML = finalDate;
             }
-            //kad scale keistusi - neveikia dar iki galo
+            //kad scale keistusi
             const scaleDIV = placeDate.getElementsByClassName("dateDIVS");
             for (let i = 0; i < scaleDIV.length; i++) {
                 scaleDIV[i].addEventListener("click", scale);
@@ -86,7 +86,7 @@ const placeForecast = async () => {
                 }
             }
             dateHTML.addEventListener("click", pridetiValandosOrus); //spaudziam ant divo su data cia
-            //sudeda divus su valandom visu dienu
+            //sudeda div'us su valandom visu dienu
             function pridetiValandosOrus() {
                 // console.log("spaudziu div prideti");
                 placeWeather.innerHTML = " ";
@@ -97,6 +97,7 @@ const placeForecast = async () => {
                     const dateAdd = dateFormat[0];
                     const hour = dateFormat[1];
                     const hourFormat = hour.substr(0, 5);
+                    //console.log(hourFormat);
 
                     if (dateAdd === dateHTML.id) {
                         // console.log(dateAdd);

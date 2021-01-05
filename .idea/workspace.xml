@@ -5,7 +5,6 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/js.js" beforeDir="false" afterPath="$PROJECT_DIR$/js.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/style.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -73,6 +72,7 @@
       <workItem from="1606736700613" duration="1479000" />
       <workItem from="1606738204160" duration="960000" />
       <workItem from="1606739325238" duration="509000" />
+      <workItem from="1609852646985" duration="1023000" />
     </task>
     <task id="LOCAL−00001" summary="added hour forecast for each day">
       <created>1606585842216</created>
@@ -131,10 +131,10 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="393" y="0" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1606739803297" />
-    <state x="549" y="167" key="FileChooserDialogImpl" timestamp="1606636250112">
+    <state x="549" y="167" key="FileChooserDialogImpl" timestamp="1609853372958">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="549" y="167" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1606636250112" />
+    <state x="549" y="167" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1609853372958" />
     <state x="361" y="145" key="Vcs.Push.Dialog.v2" timestamp="1606669496304">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
